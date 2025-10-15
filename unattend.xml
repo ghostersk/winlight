@@ -1,4 +1,13 @@
 <unattend xmlns="urn:schemas-microsoft-com:unattend">
+  <settings pass="windowsPE">
+    <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+      <DynamicUpdate>
+        <Enable>false</Enable>
+        <WillShowUI>Never</WillShowUI>
+      </DynamicUpdate>
+    </component>
+  </settings>
+
   <settings pass="oobeSystem">
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
       <OOBE>
@@ -9,8 +18,8 @@
         <ProtectYourPC>3</ProtectYourPC>
         <SkipMachineOOBE>true</SkipMachineOOBE>
         <SkipUserOOBE>true</SkipUserOOBE>
-        <SkipAutoUpdate>true</SkipAutoUpdate>
       </OOBE>
+
       <UserAccounts>
         <LocalAccounts>
           <LocalAccount>
@@ -24,6 +33,7 @@
           </LocalAccount>
         </LocalAccounts>
       </UserAccounts>
+
       <AutoLogon>
         <Username>Admin</Username>
         <Password>
@@ -33,15 +43,6 @@
         <Enabled>true</Enabled>
         <LogonCount>1</LogonCount>
       </AutoLogon>
-    </component>
-  </settings>
-
-  <settings pass="windowsPE">
-    <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-      <DynamicUpdate>
-        <Enable>false</Enable>
-        <WillShowUI>Never</WillShowUI>
-      </DynamicUpdate>
     </component>
   </settings>
 </unattend>
