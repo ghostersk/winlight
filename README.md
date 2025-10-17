@@ -15,3 +15,7 @@ This will skip the entire OOBE process including microsoft account and ANY quest
 
 #### unattend.xml was created from:
 https://schneegans.de/windows/unattend-generator
+
+
+#### Also this works:
+<img width="1034" height="559" alt="image" src="https://github.com/user-attachments/assets/af28eb9a-b9cd-414f-8eda-18ba1d8f5bd3" />
