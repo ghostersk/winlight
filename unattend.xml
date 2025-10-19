@@ -453,66 +453,6 @@ $scripts = @(
 	{
 		reg.exe add "HKU\.DEFAULT\Control Panel\Accessibility\StickyKeys" /v Flags /t REG_SZ /d 10 /f;
 	};
-	<!-- Custom code to disable Windows telemetry -->
-	{
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name 'AllowTelemetry' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name 'AllowTelemetry' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows" -Name 'CEIPEnable' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name 'Enabled' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" -Name 'AllowCortana' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name 'AllowDeviceNameInTelemetry' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name 'LimitDiagnosticLogCollection' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name 'LimitDumpCollection' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;	
-		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" -Name 'CortanaConsent' -Type 'DWord' -Value 0 -ErrorAction SilentlyContinue -Force;
-		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKLM\Software\Microsoft\Windows\Windows Error Reporting" /v Disabled /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v DODownloadMode /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\DeliveryOptimization" /v DODownloadMode /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKLM\System\CurrentControlSet\Control\Remote Assistance" /v fAllowToGetHelp /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKLM\System\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v NetworkThrottlingIndex /t reg.exe_DWORD /d 4294967295 /f;
-		reg.exe add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v ClearPageFileAtShutdown /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKLM\System\ControlSet001\Services\Ndu" /v Start /t reg.exe_DWORD /d 2 /f;
-		reg.exe add "HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters" /v IRPStackSize /t reg.exe_DWORD /d 30 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Feeds" /v ShellFeedsTaskbarViewMode /t reg.exe_DWORD /d 2 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCAMeetNow /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v ScoobeSystemSettingEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v ContentDeliveryAllowed /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v OemPreInstalledAppsEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v PreInstalledAppsEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v PreInstalledAppsEverEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SilentInstalledAppsEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338387Enabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338388Enabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338389Enabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-353698Enabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SystemPaneSuggestionsEnabled /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v EnthusiastMode /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" /v PeopleBand /t reg.exe_DWORD /d 0 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v LaunchTo /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKU\.DEFAULT\Control Panel\Desktop" /v AutoEndTasks /t reg.exe_DWORD /d 1 /f;
-		reg.exe add "HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
-		Stop-Service "dmwappushservice" -ErrorAction SilentlyContinue -Force;
-		Set-Service "dmwappushservice" -StartupType Disabled -ErrorAction SilentlyContinue -Force;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\ProgramDataUpdater" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Autochk\Proxy" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\MareBackup" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\StartupAppTask" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\PcaPatchDbTask" -ErrorAction SilentlyContinue;
-		Disable-ScheduledTask -TaskName "Microsoft\Windows\Maps\MapsUpdateTask" -ErrorAction SilentlyContinue;
-	};
 );
 
 &amp; {
@@ -645,6 +585,75 @@ $scripts = @(
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\DWM" /v ColorPrevalence /t REG_DWORD /d 0 /f;
 	};
+	<!-- Custom Part to disable Windows telemetry -->
+	{
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v AllowTelemetry /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /v CEIPEnable /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" /v Enabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortana /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowDeviceNameInTelemetry /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v LimitDiagnosticLogCollection /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v LimitDumpCollection /t reg_DWORD /d 0 /f;	
+	};
+	{
+		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\DataCollection" /v DoNotShowFeedbackNotifications /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo" /v DisabledByGroupPolicy /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Microsoft\Windows\Windows Error Reporting" /v Disabled /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v DODownloadMode /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\Software\Policies\Microsoft\Windows\DeliveryOptimization" /v DODownloadMode /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\Control\Remote Assistance" /v fAllowToGetHelp /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\Control\FileSystem" /v LongPathsEnabled /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v SystemResponsiveness /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v NetworkThrottlingIndex /t reg_DWORD /d 4294967295 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v ClearPageFileAtShutdown /t reg_DWORD /d 0 /f;
+		reg.exe add "HKLM\System\ControlSet001\Services\Ndu" /v Start /t reg_DWORD /d 2 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters" /v IRPStackSize /t reg_DWORD /d 30 /f;
+	};
+	{
+		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Feeds" /v ShellFeedsTaskbarViewMode /t reg_DWORD /d 2 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCAMeetNow /t reg_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement" /v ScoobeSystemSettingEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v ContentDeliveryAllowed /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v OemPreInstalledAppsEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v PreInstalledAppsEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v PreInstalledAppsEverEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SilentInstalledAppsEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338387Enabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338388Enabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-338389Enabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SubscribedContent-353698Enabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v SystemPaneSuggestionsEnabled /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\CloudContent" /v DisableTailoredExperiencesWithDiagnosticData /t reg_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" /v EnthusiastMode /t reg_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" /v PeopleBand /t reg_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v LaunchTo /t reg_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\Control Panel\Desktop" /v AutoEndTasks /t reg_DWORD /d 1 /f;
+		reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v CortanaConsent /t REG_DWORD /d 0 /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings" /v TaskbarEndTask /t REG_DWORD /d 1 /f;
+	};
+	{
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\ProgramDataUpdater" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Autochk\Proxy" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\MareBackup" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\StartupAppTask" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\PcaPatchDbTask" -ErrorAction SilentlyContinue;
+		Disable-ScheduledTask -TaskName "Microsoft\Windows\Maps\MapsUpdateTask" -ErrorAction SilentlyContinue;
+	};
+	{
+		Stop-Service "dmwappushservice" -Force;
+		Set-Service "dmwappushservice" -StartupType Disabled -Force;
+	};
+	<!-- End of custom part ( different from the web xml generator) -->
 	{
 		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Normal -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
 	};
