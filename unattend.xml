@@ -609,6 +609,12 @@ $scripts = @(
 		reg.exe add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v ClearPageFileAtShutdown /t reg_DWORD /d 0 /f;
 		reg.exe add "HKLM\System\ControlSet001\Services\Ndu" /v Start /t reg_DWORD /d 2 /f;
 		reg.exe add "HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters" /v IRPStackSize /t reg_DWORD /d 30 /f;
+		reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v VerboseStatus /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Microsoft\\PolicyManager\\current\\device\\Start" /v HideRecommendedSection /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\Microsoft\\PolicyManager\\current\\device\\IsEducationEnvironment" /v Start /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\Software\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer" /v HideRecommendedSection /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\\Control\\CrashControl" /v DisplayParameters /t reg_DWORD /d 1 /f;
+		reg.exe add "HKLM\System\CurrentControlSet\\Control\\CrashControl" /v DisableEmoticon /t reg_DWORD /d 1 /f;
 	};
 	{
 		reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t reg_DWORD /d 0 /f;
