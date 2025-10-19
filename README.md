@@ -12,10 +12,11 @@ skip.cmd
 
 This will skip the entire OOBE process including microsoft account and ANY questions during the setup process.
 - it using the unattended.xml file with OOBE for automatic setup ( my has set default language EN-GB)
-- creates first administrator account without password "LocalAdmin"
+- It will ask for username and password ( local account)
+- after new user details are given, it will try to run update but as windows update is disabled it restarts 2x
+- then you will be sign in to account you created, and windows update will be re-enabled automatically
 - You can create your own xml file with: https://schneegans.de/windows/unattend-generator/
 - I have added there custom section for debloating and disabling telementry for new accounts
-- It also SKIPS the initial Updates what could take some time, depending on pc and your internet speed
 
 ![Example](misc/WinDesktop.png)
 
