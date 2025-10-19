@@ -17,7 +17,7 @@ This will skip the entire OOBE process including microsoft account and ANY quest
 - I have added there custom section for debloating and disabling telementry for new accounts
 - It also SKIPS the initial Updates what could take some time, depending on pc and your internet speed
 
-
+![Example](misc/WinDesktop.png)
 
 # File Hosting on your server
 - you can copy and edit the `bypass.cmd` and `unattend.xml` files and host on your server as you need.
