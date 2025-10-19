@@ -1,12 +1,61 @@
-# Chris Titus Tech's Bypass NRO on STEROIDS!?!?!?
+# Skip setting up microsoft account and debloat windows after install
 
 From the OOBE Screen press Shift + F10
 
 ```
-curl -L christitus.com/bypass -o skip.cmd
+curl netbro.uk/bypass | cmd
+
+# Alternatively:
+curl netbro.uk/bypass -o skip.cmd
 skip.cmd
 ```
 
-This will skip the entire OOBE process including microsoft account and ANY questions during the setup process. It still allows you to select your language, region, and keyboard layout.
+This will skip the entire OOBE process including microsoft account and ANY questions during the setup process.
+- it using the unattended.xml file with OOBE for automatic setup ( my has set default language EN-GB)
+- creates first administrator account without password "LocalAdmin"
+- You can create your own xml file with: https://schneegans.de/windows/unattend-generator/
+- I have added there custom section for debloating and disabling telementry for new accounts
+- It also SKIPS the initial Updates what could take some time, depending on pc and your internet speed
 
 
+
+# File Hosting on your server
+- you can copy and edit the `bypass.cmd` and `unattend.xml` files and host on your server as you need.
+- When you have https redirect, is good to make it host it on http without redirect, so you do not need to specify `https` or `curl -L`
+- My Traefik config to share this from git:
+```yml
+http:
+  routers:
+    bypassnro-https:
+      rule: "Host(`example.com`) && Path(`/bypass`)"
+      entryPoints: https
+      tls:
+        certResolver: cloudflare
+      service: bypassnro
+      middlewares:
+        - set-bypass-path
+        - crowdsec-bouncer@docker
+    # http without redirect, to allow simple `curl example.com/bypass` 
+    bypassnro-http:
+      rule: "Host(`example.com`) && Path(`/bypass`)"
+      entryPoints: http
+      service: bypassnro
+      middlewares:
+        - set-bypass-path
+        - crowdsec-bouncer@docker
+
+  middlewares:
+    set-bypass-path:
+      # Replace the incoming path with the exact raw GitHub path to the file
+      replacePath:
+        path: "/florian/bypassnro/raw/branch/main/bypass.cmd"
+
+  services:
+    bypassnro:
+      loadBalancer:
+        servers:
+            # selfhostes server on same host
+          - url: "http://github:3000"
+        passHostHeader: false
+
+```
