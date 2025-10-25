@@ -9,6 +9,7 @@ curl netbro.uk/bypass | cmd
 curl netbro.uk/bypass -o skip.cmd
 skip.cmd
 ```
+## the example above is my self hosted solution ( not using github) you should use your own.
 
 This will skip the entire OOBE process including microsoft account and ANY questions during the setup process.
 - it using the unattended.xml file with OOBE for automatic setup ( my has set default language EN-GB)
